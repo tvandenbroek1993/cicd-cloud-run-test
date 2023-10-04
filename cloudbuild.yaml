@@ -1,0 +1,18 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/sandbox-tomvdb/tensorflow-mnist-flask:$SHORT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/sandbox-tomvdb/tensorflow-mnist-flask:$SHORT_SHA']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - 'run'
+    - 'deploy'
+    - 'tensorflow-mnist-flask'
+    - '--image'
+    - 'gcr.io/sandbox-tomvdb/tensorflow-mnist-flask:$SHORT_SHA'
+    - '--region'
+    - 'europe-west1'
+    - '--platform'
+    - 'managed'
+    - '--allow-unauthenticated'
+images: ['gcr.io/sandbox-tomvdb/tensorflow-mnist-flask:$SHORT_SHA']

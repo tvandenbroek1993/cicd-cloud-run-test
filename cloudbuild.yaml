@@ -7,7 +7,7 @@ steps:
   args:
     - 'run'
     - 'deploy'
-    - 'tensorflow-mnist-flask'
+    - 'tensorflow-mnist-flask2'
     - '--image'
     - 'gcr.io/sandbox-tomvdb/tensorflow-mnist-flask:$SHORT_SHA'
     - '--region'

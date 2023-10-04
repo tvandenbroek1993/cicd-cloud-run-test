@@ -36,7 +36,7 @@ def index():
             pillow_img = Image.open(io.BytesIO(image_bytes)).convert('L')
             tensor = transform_image(pillow_img)
             prediction = predict(tensor)
-            data = {"prediction": int(prediction)}
+            data = {"prediction: ": int(prediction)}
             return jsonify(data)
         except Exception as e:
             return jsonify({"error": str(e)})
